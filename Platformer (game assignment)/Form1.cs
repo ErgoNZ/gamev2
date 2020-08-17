@@ -83,6 +83,21 @@ namespace Platformer__game_assignment_
         private void Gravity_Tick(object sender, EventArgs e)
         {
             PlayerOne.Top += Ymovement;
+            if (PlayerOne.Bounds.IntersectsWith(ground1.Bounds))
+            {
+                Ymovement = 0;
+                Jump = 0;
+                PlayerOne.Top = ground1.Top - 34;
+                Console.WriteLine("this works");
+            }
+            else
+            {
+                Ymovement += 1;
+                if (Ymovement > 20)
+                {
+                    Ymovement = 20;
+                }
+            }
             foreach (Control x in this.Controls)
             {
                 if (x.Tag == "Platform")
